@@ -1,0 +1,727 @@
+{
+  "dire_wolf": {
+    "name": "Dire Wolf",
+    "description": "A massive wolf with glowing red eyes and razor-sharp teeth.",
+    "creature_type": "HOSTILE",
+    "health": 80,
+    "damage": 15,
+    "defense": 6,
+    "experience": 50,
+    "loot": [
+      "wolf pelt",
+      "sharp fang"
+    ],
+    "level": 4
+  },
+  "forest_troll": {
+    "name": "Forest Troll",
+    "description": "A hulking troll covered in moss and lichen.",
+    "creature_type": "HOSTILE",
+    "health": 150,
+    "damage": 25,
+    "defense": 12,
+    "experience": 100,
+    "loot": [
+      "troll hide",
+      "regeneration potion"
+    ],
+    "level": 7
+  },
+  "treant": {
+    "name": "Treant",
+    "description": "An ancient tree come to life, guardian of the forest.",
+    "creature_type": "NEUTRAL",
+    "health": 200,
+    "damage": 30,
+    "defense": 20,
+    "experience": 150,
+    "loot": [
+      "ancient wood",
+      "nature essence"
+    ],
+    "level": 10
+  },
+  "pixie": {
+    "name": "Pixie",
+    "description": "A tiny magical creature with shimmering wings.",
+    "creature_type": "PASSIVE",
+    "health": 20,
+    "damage": 5,
+    "defense": 2,
+    "experience": 15,
+    "loot": [
+      "pixie dust",
+      "tiny bell"
+    ],
+    "level": 2
+  },
+  "corrupted_deer": {
+    "name": "Corrupted Deer",
+    "description": "Once majestic, now twisted by dark magic.",
+    "creature_type": "HOSTILE",
+    "health": 60,
+    "damage": 12,
+    "defense": 4,
+    "experience": 35,
+    "loot": [
+      "corrupted antler",
+      "tainted meat"
+    ],
+    "level": 3
+  },
+  "cave_spider": {
+    "name": "Cave Spider",
+    "description": "A massive spider that lurks in dark caverns.",
+    "creature_type": "HOSTILE",
+    "health": 70,
+    "damage": 18,
+    "defense": 5,
+    "experience": 45,
+    "loot": [
+      "spider silk",
+      "venom sac"
+    ],
+    "level": 4
+  },
+  "rock_golem": {
+    "name": "Rock Golem",
+    "description": "A living construct of stone and earth.",
+    "creature_type": "HOSTILE",
+    "health": 180,
+    "damage": 28,
+    "defense": 25,
+    "experience": 120,
+    "loot": [
+      "stone core",
+      "gem shards"
+    ],
+    "level": 9
+  },
+  "bat_swarm": {
+    "name": "Bat Swarm",
+    "description": "Hundreds of bats moving as one.",
+    "creature_type": "HOSTILE",
+    "health": 50,
+    "damage": 15,
+    "defense": 3,
+    "experience": 30,
+    "loot": [
+      "bat wing"
+    ],
+    "level": 3
+  },
+  "underground_wurm": {
+    "name": "Underground Wurm",
+    "description": "A massive worm that burrows through solid rock.",
+    "creature_type": "HOSTILE",
+    "health": 220,
+    "damage": 35,
+    "defense": 15,
+    "experience": 180,
+    "loot": [
+      "wurm scale",
+      "acid gland"
+    ],
+    "level": 12
+  },
+  "zombie": {
+    "name": "Zombie",
+    "description": "A shambling corpse animated by dark magic.",
+    "creature_type": "HOSTILE",
+    "health": 50,
+    "damage": 10,
+    "defense": 3,
+    "experience": 25,
+    "loot": [
+      "rotten flesh"
+    ],
+    "level": 2
+  },
+  "ghoul": {
+    "name": "Ghoul",
+    "description": "A faster, more dangerous undead creature.",
+    "creature_type": "HOSTILE",
+    "health": 65,
+    "damage": 16,
+    "defense": 5,
+    "experience": 40,
+    "loot": [
+      "ghoul claw",
+      "cursed bone"
+    ],
+    "level": 4
+  },
+  "wraith": {
+    "name": "Wraith",
+    "description": "A ghostly spirit that drains life energy.",
+    "creature_type": "HOSTILE",
+    "health": 80,
+    "damage": 20,
+    "defense": 8,
+    "experience": 70,
+    "loot": [
+      "ectoplasm",
+      "soul fragment"
+    ],
+    "level": 6
+  },
+  "vampire": {
+    "name": "Vampire",
+    "description": "An elegant but deadly bloodsucker.",
+    "creature_type": "HOSTILE",
+    "health": 120,
+    "damage": 25,
+    "defense": 12,
+    "experience": 130,
+    "loot": [
+      "vampire fang",
+      "blood vial"
+    ],
+    "level": 9
+  },
+  "lich": {
+    "name": "Lich",
+    "description": "A powerful undead sorcerer.",
+    "creature_type": "BOSS",
+    "health": 300,
+    "damage": 40,
+    "defense": 18,
+    "experience": 500,
+    "loot": [
+      "phylactery shard",
+      "necromantic tome",
+      "lich staff"
+    ],
+    "level": 15
+  },
+  "fire_elemental": {
+    "name": "Fire Elemental",
+    "description": "A being of pure flame.",
+    "creature_type": "HOSTILE",
+    "health": 90,
+    "damage": 30,
+    "defense": 5,
+    "experience": 80,
+    "loot": [
+      "fire essence",
+      "flame core"
+    ],
+    "level": 7
+  },
+  "ice_elemental": {
+    "name": "Ice Elemental",
+    "description": "A creature of frozen magic.",
+    "creature_type": "HOSTILE",
+    "health": 100,
+    "damage": 25,
+    "defense": 10,
+    "loot": [
+      "ice crystal",
+      "frost core"
+    ],
+    "level": 7
+  },
+  "air_elemental": {
+    "name": "Air Elemental",
+    "description": "A swirling vortex of wind.",
+    "creature_type": "HOSTILE",
+    "health": 70,
+    "damage": 20,
+    "defense": 3,
+    "experience": 60,
+    "loot": [
+      "air essence"
+    ],
+    "level": 6
+  },
+  "earth_elemental": {
+    "name": "Earth Elemental",
+    "description": "A hulking mass of rock and soil.",
+    "creature_type": "HOSTILE",
+    "health": 150,
+    "damage": 28,
+    "defense": 20,
+    "experience": 90,
+    "loot": [
+      "earth essence",
+      "precious gems"
+    ],
+    "level": 8
+  },
+  "drake": {
+    "name": "Drake",
+    "description": "A young dragon, still dangerous.",
+    "creature_type": "HOSTILE",
+    "health": 180,
+    "damage": 35,
+    "defense": 15,
+    "experience": 200,
+    "loot": [
+      "drake scale",
+      "dragon tooth"
+    ],
+    "level": 11
+  },
+  "wyvern": {
+    "name": "Wyvern",
+    "description": "A two-legged dragon with a venomous tail.",
+    "creature_type": "HOSTILE",
+    "health": 160,
+    "damage": 32,
+    "defense": 13,
+    "experience": 180,
+    "loot": [
+      "wyvern venom",
+      "wyvern hide"
+    ],
+    "level": 10
+  },
+  "ancient_dragon": {
+    "name": "Ancient Dragon",
+    "description": "A colossal wyrm of immense power.",
+    "creature_type": "BOSS",
+    "health": 500,
+    "damage": 60,
+    "defense": 30,
+    "experience": 1000,
+    "loot": [
+      "dragon heart",
+      "dragon scale armor",
+      "legendary hoard"
+    ],
+    "level": 20
+  },
+  "imp": {
+    "name": "Imp",
+    "description": "A small but mischievous demon.",
+    "creature_type": "HOSTILE",
+    "health": 40,
+    "damage": 12,
+    "defense": 4,
+    "experience": 30,
+    "loot": [
+      "imp horn",
+      "brimstone"
+    ],
+    "level": 3
+  },
+  "hellhound": {
+    "name": "Hellhound",
+    "description": "A demonic dog wreathed in flames.",
+    "creature_type": "HOSTILE",
+    "health": 95,
+    "damage": 22,
+    "defense": 8,
+    "experience": 75,
+    "loot": [
+      "hellhound fang",
+      "infernal collar"
+    ],
+    "level": 7
+  },
+  "demon": {
+    "name": "Demon",
+    "description": "A powerful entity from the underworld.",
+    "creature_type": "HOSTILE",
+    "health": 200,
+    "damage": 40,
+    "defense": 15,
+    "experience": 250,
+    "loot": [
+      "demon horn",
+      "infernal essence"
+    ],
+    "level": 13
+  },
+  "archdevil": {
+    "name": "Archdevil",
+    "description": "A lord of the hells.",
+    "creature_type": "BOSS",
+    "health": 400,
+    "damage": 55,
+    "defense": 25,
+    "experience": 750,
+    "loot": [
+      "devil crown",
+      "infernal contract",
+      "hellforged blade"
+    ],
+    "level": 18
+  },
+  "dire_bear": {
+    "name": "Dire Bear",
+    "description": "An enormous bear of legendary size.",
+    "creature_type": "HOSTILE",
+    "health": 140,
+    "damage": 30,
+    "defense": 12,
+    "experience": 110,
+    "loot": [
+      "bear pelt",
+      "bear claw"
+    ],
+    "level": 8
+  },
+  "sabertooth_tiger": {
+    "name": "Sabertooth Tiger",
+    "description": "A prehistoric predator with massive fangs.",
+    "creature_type": "HOSTILE",
+    "health": 100,
+    "damage": 28,
+    "defense": 8,
+    "experience": 90,
+    "loot": [
+      "sabertooth",
+      "striped pelt"
+    ],
+    "level": 7
+  },
+  "giant_eagle": {
+    "name": "Giant Eagle",
+    "description": "A majestic bird of prey, large enough to carry a person.",
+    "creature_type": "NEUTRAL",
+    "health": 85,
+    "damage": 20,
+    "defense": 6,
+    "experience": 65,
+    "loot": [
+      "eagle feather",
+      "talon"
+    ],
+    "level": 6
+  },
+  "griffon": {
+    "name": "Griffon",
+    "description": "Half eagle, half lion, all majesty.",
+    "creature_type": "NEUTRAL",
+    "health": 150,
+    "damage": 32,
+    "defense": 14,
+    "experience": 140,
+    "loot": [
+      "griffon feather",
+      "lion claw"
+    ],
+    "level": 10
+  },
+  "phoenix": {
+    "name": "Phoenix",
+    "description": "A legendary bird of fire that cannot truly die.",
+    "creature_type": "NEUTRAL",
+    "health": 180,
+    "damage": 38,
+    "defense": 12,
+    "experience": 300,
+    "loot": [
+      "phoenix feather",
+      "rebirth ash"
+    ],
+    "level": 14
+  },
+  "unicorn": {
+    "name": "Unicorn",
+    "description": "A pure white horse with a spiraling horn.",
+    "creature_type": "PASSIVE",
+    "health": 120,
+    "damage": 25,
+    "defense": 10,
+    "experience": 150,
+    "loot": [
+      "unicorn horn",
+      "mane hair"
+    ],
+    "level": 9
+  },
+  "beholder": {
+    "name": "Beholder",
+    "description": "A floating orb with a massive central eye and many stalks.",
+    "creature_type": "HOSTILE",
+    "health": 220,
+    "damage": 45,
+    "defense": 16,
+    "experience": 350,
+    "loot": [
+      "eye stalks",
+      "central lens"
+    ],
+    "level": 15
+  },
+  "mind_flayer": {
+    "name": "Mind Flayer",
+    "description": "A psionic horror that feeds on brains.",
+    "creature_type": "HOSTILE",
+    "health": 130,
+    "damage": 35,
+    "defense": 12,
+    "experience": 200,
+    "loot": [
+      "brain matter",
+      "psionic crystal"
+    ],
+    "level": 12
+  },
+  "gelatinous_cube": {
+    "name": "Gelatinous Cube",
+    "description": "A transparent cube of acidic ooze.",
+    "creature_type": "HOSTILE",
+    "health": 110,
+    "damage": 20,
+    "defense": 5,
+    "experience": 70,
+    "loot": [
+      "acidic residue"
+    ],
+    "level": 6
+  },
+  "dryad": {
+    "name": "Dryad",
+    "description": "A beautiful tree spirit.",
+    "creature_type": "NEUTRAL",
+    "health": 70,
+    "damage": 15,
+    "defense": 6,
+    "experience": 50,
+    "loot": [
+      "enchanted wood",
+      "fey blessing"
+    ],
+    "level": 5
+  },
+  "satyr": {
+    "name": "Satyr",
+    "description": "A mischievous half-goat creature.",
+    "creature_type": "NEUTRAL",
+    "health": 60,
+    "damage": 14,
+    "defense": 5,
+    "experience": 40,
+    "loot": [
+      "pan pipes",
+      "goat horn"
+    ],
+    "level": 4
+  },
+  "banshee": {
+    "name": "Banshee",
+    "description": "A wailing spirit that heralds death.",
+    "creature_type": "HOSTILE",
+    "health": 90,
+    "damage": 30,
+    "defense": 7,
+    "experience": 100,
+    "loot": [
+      "spectral essence",
+      "mourning veil"
+    ],
+    "level": 8
+  },
+  "hill_giant": {
+    "name": "Hill Giant",
+    "description": "A brutish giant of enormous strength.",
+    "creature_type": "HOSTILE",
+    "health": 250,
+    "damage": 45,
+    "defense": 18,
+    "experience": 280,
+    "loot": [
+      "giant club",
+      "giant provisions"
+    ],
+    "level": 13
+  },
+  "frost_giant": {
+    "name": "Frost Giant",
+    "description": "A giant from the frozen wastes.",
+    "creature_type": "HOSTILE",
+    "health": 280,
+    "damage": 50,
+    "defense": 22,
+    "experience": 320,
+    "loot": [
+      "frost giant axe",
+      "ice shard"
+    ],
+    "level": 14
+  },
+  "fire_giant": {
+    "name": "Fire Giant",
+    "description": "A giant wreathed in flames.",
+    "creature_type": "HOSTILE",
+    "health": 300,
+    "damage": 55,
+    "defense": 25,
+    "experience": 350,
+    "loot": [
+      "fire giant sword",
+      "molten core"
+    ],
+    "level": 15
+  },
+  "animated_armor": {
+    "name": "Animated Armor",
+    "description": "A suit of armor moving with no wearer.",
+    "creature_type": "HOSTILE",
+    "health": 100,
+    "damage": 22,
+    "defense": 20,
+    "experience": 70,
+    "loot": [
+      "enchanted plates"
+    ],
+    "level": 7
+  },
+  "iron_golem": {
+    "name": "Iron Golem",
+    "description": "A massive construct of iron and magic.",
+    "creature_type": "HOSTILE",
+    "health": 350,
+    "damage": 50,
+    "defense": 35,
+    "experience": 400,
+    "loot": [
+      "golem core",
+      "iron plating"
+    ],
+    "level": 16
+  },
+  "giant_octopus": {
+    "name": "Giant Octopus",
+    "description": "A massive sea creature with eight tentacles.",
+    "creature_type": "HOSTILE",
+    "health": 140,
+    "damage": 28,
+    "defense": 10,
+    "experience": 120,
+    "loot": [
+      "tentacle",
+      "ink sac"
+    ],
+    "level": 9
+  },
+  "sea_serpent": {
+    "name": "Sea Serpent",
+    "description": "A legendary creature of the deep.",
+    "creature_type": "BOSS",
+    "health": 380,
+    "damage": 48,
+    "defense": 20,
+    "experience": 600,
+    "loot": [
+      "serpent scale",
+      "tidal pearl"
+    ],
+    "level": 17
+  },
+  "merfolk_warrior": {
+    "name": "Merfolk Warrior",
+    "description": "A guardian of the underwater realms.",
+    "creature_type": "NEUTRAL",
+    "health": 80,
+    "damage": 20,
+    "defense": 8,
+    "experience": 60,
+    "loot": [
+      "coral spear",
+      "sea shell"
+    ],
+    "level": 6
+  },
+  "giant_ant": {
+    "name": "Giant Ant",
+    "description": "An ant the size of a dog.",
+    "creature_type": "HOSTILE",
+    "health": 45,
+    "damage": 12,
+    "defense": 8,
+    "experience": 25,
+    "loot": [
+      "ant chitin"
+    ],
+    "level": 3
+  },
+  "giant_scorpion": {
+    "name": "Giant Scorpion",
+    "description": "A scorpion with a deadly venomous sting.",
+    "creature_type": "HOSTILE",
+    "health": 70,
+    "damage": 20,
+    "defense": 12,
+    "experience": 55,
+    "loot": [
+      "scorpion venom",
+      "stinger"
+    ],
+    "level": 5
+  },
+  "orc_warrior": {
+    "name": "Orc Warrior",
+    "description": "A brutal orc fighter.",
+    "creature_type": "HOSTILE",
+    "health": 85,
+    "damage": 20,
+    "defense": 10,
+    "experience": 50,
+    "loot": [
+      "orcish blade",
+      "war paint"
+    ],
+    "level": 5
+  },
+  "dark_elf_assassin": {
+    "name": "Dark Elf Assassin",
+    "description": "A deadly killer from the underground.",
+    "creature_type": "HOSTILE",
+    "health": 75,
+    "damage": 28,
+    "defense": 8,
+    "experience": 85,
+    "loot": [
+      "poisoned dagger",
+      "shadow cloak"
+    ],
+    "level": 7
+  },
+  "minotaur": {
+    "name": "Minotaur",
+    "description": "A bull-headed warrior of the labyrinth.",
+    "creature_type": "HOSTILE",
+    "health": 160,
+    "damage": 35,
+    "defense": 15,
+    "experience": 160,
+    "loot": [
+      "minotaur horn",
+      "maze map"
+    ],
+    "level": 11
+  },
+  "cyclops": {
+    "name": "Cyclops",
+    "description": "A one-eyed giant of legendary strength.",
+    "creature_type": "HOSTILE",
+    "health": 240,
+    "damage": 42,
+    "defense": 16,
+    "experience": 250,
+    "loot": [
+      "giant eye",
+      "cyclops club"
+    ],
+    "level": 13
+  },
+  "forest_nightmare": {
+    "name": "The Forest Nightmare",
+    "description": "The ancient evil that controls the Whispering Woods.",
+    "creature_type": "BOSS",
+    "health": 666,
+    "damage": 75,
+    "defense": 35,
+    "experience": 2000,
+    "loot": [
+      "nightmare's crown",
+      "corrupted heart",
+      "freedom key"
+    ],
+    "level": 25
+  }
+}
