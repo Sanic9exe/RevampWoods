@@ -5,7 +5,7 @@ import os
 from typing import Dict, Optional, Any
 from datetime import datetime
 
-from .utils import SAVE_FILE
+from .utils import SAVE_FILE, SETTINGS
 from .colors import Colors
 
 # ============================================================================

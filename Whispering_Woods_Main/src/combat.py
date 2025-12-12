@@ -6,7 +6,7 @@ import time
 
 from .models import Creature, Item
 from .colors import Colors
-from .utils import slow_print, CreatureType
+from .utils import slow_print, CreatureType, SETTINGS
 
 if TYPE_CHECKING:
     from .player import Player

@@ -8,7 +8,7 @@ from typing import Dict, List, Optional, Tuple, Any, Set
 from datetime import datetime
 
 from .colors import Colors
-from .utils import slow_print, clear_screen, GAME_TITLE, GAME_VERSION, instant_print, colored_text, print_separator, get_input
+from .utils import slow_print, clear_screen, GAME_TITLE, GAME_VERSION, instant_print, colored_text, print_separator, get_input, SETTINGS
 from .player import Player
 from .location import Location
 from .world_builder import WorldBuilder
@@ -22,6 +22,7 @@ from .achievement_system import AchievementSystem
 from .admin import AdminPanel
 from .save_system import SaveLoadSystem as SaveSystem
 from .models import Item, Creature, Quest
+from .data_store import select_difficulty_mode, get_difficulty_multipliers, select_starting_location
 
 # ============================================================================
 # MAIN GAME CLASS

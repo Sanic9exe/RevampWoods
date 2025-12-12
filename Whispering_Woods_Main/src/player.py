@@ -6,7 +6,7 @@ from datetime import datetime
 import random
 
 from .colors import Colors
-from .utils import ItemType, StatusEffect, slow_print, SkillType
+from .utils import ItemType, StatusEffect, slow_print, SkillType, SETTINGS
 from .models import Item, Creature, Quest, Achievement
 
 # ============================================================================

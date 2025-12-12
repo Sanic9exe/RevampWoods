@@ -3,6 +3,21 @@ Game data store containing all NPCs, items, creatures, quests, locations, etc.
 This module contains large data dictionaries used throughout the game.
 """
 
+from typing import Tuple, Dict, List, Optional, TYPE_CHECKING
+import random
+import time
+
+if TYPE_CHECKING:
+    from .models import Item
+    from .player import Player
+    from .utils import DifficultyMode
+else:
+    # Import DifficultyMode at runtime
+    from .utils import DifficultyMode
+
+from .colors import Colors
+from .utils import instant_print, colored_text
+
 # ============================================================================
 # EXPANDED CREATURE DATABASE (50+ New Creatures)
 # ============================================================================
@@ -1474,7 +1489,7 @@ class FishingGame:
     ]
     
     @staticmethod
-    def play(player: 'Player') -> Tuple[bool, str, Optional[Item]]:
+    def play(player: 'Player') -> Tuple[bool, str, Optional['Item']]:
         """Play the fishing mini-game."""
         if not player.has_item("fishing rod"):
             return False, "You need a fishing rod!", None

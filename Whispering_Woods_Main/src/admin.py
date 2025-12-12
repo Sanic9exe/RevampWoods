@@ -6,7 +6,8 @@ from typing import Dict, List, Optional, Any, Tuple
 import random
 
 from .colors import Colors
-from .utils import slow_print, ADMIN_PASSWORD
+from .utils import slow_print, ADMIN_PASSWORD, SETTINGS
+from .data_store import select_difficulty_mode
 
 # ============================================================================
 # ADMIN PANEL
