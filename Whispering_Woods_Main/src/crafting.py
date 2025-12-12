@@ -1,6 +1,6 @@
 """Crafting system."""
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 import random
 
 from .models import CraftingRecipe, Item

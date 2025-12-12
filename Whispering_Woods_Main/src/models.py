@@ -3,6 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any, Callable, Tuple
 from datetime import datetime
+import random
 
 from .utils import (
     ItemType, CreatureType, Weather, TimeOfDay, StatusEffect, DifficultyMode, SkillType

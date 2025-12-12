@@ -81,7 +81,7 @@ class SaveLoadSystem:
             return None
     
     @staticmethod
-    def _save_world_state(world: Dict[str, Location]) -> Dict:
+    def _save_world_state(world: Dict[str, 'Location']) -> Dict:
         """Save the state of modified locations."""
         state = {}
         for loc_id, location in world.items():
@@ -99,7 +99,7 @@ class SaveLoadSystem:
         return state
     
     @staticmethod
-    def _load_world_state(world: Dict[str, Location], state: Dict):
+    def _load_world_state(world: Dict[str, 'Location'], state: Dict):
         """Load the state of modified locations."""
         for loc_id, loc_state in state.items():
             if loc_id in world:

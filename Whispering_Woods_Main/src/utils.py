@@ -2,6 +2,7 @@
 
 import time
 import sys
+import os
 import random
 from enum import Enum, auto
 from typing import Dict, List, Optional, Tuple, Any
@@ -291,4 +292,84 @@ def hash_password(password: str) -> str:
     """Hash a password for comparison."""
     return hashlib.sha256(password.encode()).hexdigest()
 
+
+# ============================================================================
+# GLOBAL GAME SETTINGS
+# ============================================================================
+
+class GameSettings:
+    """Global game settings and configuration."""
+    def __init__(self):
+        self.text_speed = 0.03
+        self.enable_colors = True
+        self.enable_sound = False
+        self.auto_save = True
+        self.difficulty = "normal"
+        self.show_hints = True
+        self.confirm_actions = True
+        self.debug_mode = False
+        self.admin_mode = False
+        self.god_mode = False
+        self.infinite_inventory = False
+        self.no_hunger = False
+        self.no_thirst = False
+        self.instant_kill = False
+        self.reveal_map = False
+        self.unlimited_gold = False
+        self.skip_combat = False
+        
+    def to_dict(self) -> Dict:
+        return self.__dict__.copy()
+    
+    def from_dict(self, data: Dict):
+        for key, value in data.items():
+            if hasattr(self, key):
+                setattr(self, key, value)
+
+# Global settings instance
+SETTINGS = GameSettings()
+
+def get_input(prompt: str = "> ", color: str = Colors.GREEN) -> str:
+    """Get user input with a colored prompt."""
+    try:
+        if SETTINGS.enable_colors:
+            user_input = input(f"{color}{prompt}{Colors.RESET}").strip().lower()
+        else:
+            user_input = input(prompt).strip().lower()
+        return user_input
+    except EOFError:
+        return "quit"
+    except KeyboardInterrupt:
+        print()
+        return "quit"
+
+def roll_dice(sides: int = 20, count: int = 1, modifier: int = 0) -> int:
+    """Roll dice with optional count and modifier."""
+    total = sum(random.randint(1, sides) for _ in range(count))
+    return total + modifier
+
+def chance(percentage: int) -> bool:
+    """Return True with given percentage chance."""
+    return random.randint(1, 100) <= percentage
+
+def format_time(minutes: int) -> str:
+    """Format minutes into hours and minutes string."""
+    hours = minutes // 60
+    mins = minutes % 60
+    if hours > 0:
+        return f"{hours}h {mins}m"
+    return f"{mins}m"
+
+def log_event(event: str):
+    """Log an event to the log file."""
+    try:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(LOG_FILE, 'a') as f:
+            f.write(f"[{timestamp}] {event}\n")
+    except Exception:
+        pass
+
+def hash_password(password: str) -> str:
+    """Hash a password for comparison."""
+    return hashlib.sha256(password.encode()).hexdigest()
 

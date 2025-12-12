@@ -4,21 +4,23 @@ import random
 import time
 import sys
 import os
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Set
 from datetime import datetime
 
 from .colors import Colors
-from .utils import slow_print, clear_screen, GAME_TITLE, GAME_VERSION
+from .utils import slow_print, clear_screen, GAME_TITLE, GAME_VERSION, instant_print, colored_text, print_separator, get_input
 from .player import Player
 from .location import Location
 from .world_builder import WorldBuilder
+from .item_factory import ItemFactory
+from .creature_factory import CreatureFactory
 from .crafting import CraftingSystem
 from .combat import CombatSystem
-from .weather import WeatherSystem
-from .quest_system import QuestManager
+from .weather import TimeWeatherSystem as WeatherSystem
+from .quest_system import QuestSystem as QuestManager
 from .achievement_system import AchievementSystem
 from .admin import AdminPanel
-from .save_system import SaveSystem
+from .save_system import SaveLoadSystem as SaveSystem
 from .models import Item, Creature, Quest
 
 # ============================================================================
@@ -31,7 +33,7 @@ class Game:
     def __init__(self):
         self.player = Player()
         self.world = WorldBuilder.create_world()
-        self.time_weather = TimeWeatherSystem()
+        self.time_weather = WeatherSystem()
         self.running = True
         
         # Integrate new routes from NEW_ROUTES_DATABASE and ADDITIONAL_ROUTES
@@ -41,7 +43,7 @@ class Game:
         ItemFactory.initialize_database()
         CreatureFactory.initialize_database()
         CraftingSystem.initialize_recipes()
-        QuestSystem.initialize_quests()
+        QuestManager.initialize_quests()
         AchievementSystem.initialize_achievements()
     
     def _integrate_new_routes(self):
@@ -155,7 +157,7 @@ class Game:
         self._show_introduction()
         
         # Start initial quest
-        QuestSystem.start_quest("escape_forest", self.player)
+        QuestManager.start_quest("escape_forest", self.player)
     
     def _show_introduction(self):
         """Show game introduction."""

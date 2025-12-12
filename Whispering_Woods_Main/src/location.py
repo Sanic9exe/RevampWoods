@@ -1,11 +1,12 @@
 """Location class for game areas."""
 
+from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
 import random
 
 from .colors import Colors
-from .models import Route
-from .utils import slow_print
+from .models import Route, Item, Creature
+from .utils import slow_print, TimeOfDay, Weather
 
 # ============================================================================
 # LOCATION CLASS WITH NUMBERED ROUTES

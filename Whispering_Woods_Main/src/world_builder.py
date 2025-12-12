@@ -1,6 +1,6 @@
 """World builder - creates all game locations."""
 
-from typing import Dict, List
+from typing import Dict, List, Optional, Tuple, Any
 import random
 
 from .location import Location
@@ -8,6 +8,7 @@ from .models import Route
 from .item_factory import ItemFactory
 from .creature_factory import CreatureFactory
 from .colors import Colors
+from .utils import SkillType
 
 # ============================================================================
 # WORLD BUILDER - CREATES ALL LOCATIONS WITH NUMBERED ROUTES

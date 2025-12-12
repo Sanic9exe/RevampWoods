@@ -1,12 +1,15 @@
 """Combat system."""
 
-from typing import Optional, List, Dict, Tuple
+from typing import Optional, List, Dict, Tuple, Any, TYPE_CHECKING
 import random
 import time
 
 from .models import Creature, Item
 from .colors import Colors
 from .utils import slow_print, CreatureType
+
+if TYPE_CHECKING:
+    from .player import Player
 
 # ============================================================================
 # COMBAT SYSTEM
@@ -16,7 +19,7 @@ class CombatSystem:
     """Handles combat between player and creatures."""
     
     @staticmethod
-    def start_combat(player: Player, creature: Creature) -> bool:
+    def start_combat(player: 'Player', creature: Creature) -> bool:
         """
         Start and manage combat between player and creature.
         Returns True if player wins, False if player dies or flees.
@@ -63,7 +66,7 @@ class CombatSystem:
         return True
     
     @staticmethod
-    def _display_combat_status(player: Player, creature: Creature):
+    def _display_combat_status(player: 'Player', creature: Creature):
         """Display current combat status."""
         player_health_pct = int((player.health / player.max_health) * 20)
         player_bar = colored_text("█" * player_health_pct, Colors.GREEN) + \
@@ -92,7 +95,7 @@ class CombatSystem:
         return get_input("Your action: ", Colors.BOLD_RED)
     
     @staticmethod
-    def _player_attack(player: Player, creature: Creature):
+    def _player_attack(player: 'Player', creature: Creature):
         """Handle player's attack."""
         damage, damage_type = player.get_attack_damage()
         
@@ -115,13 +118,13 @@ class CombatSystem:
             slow_print(colored_text(f"The {creature.name} falls!", Colors.BOLD_YELLOW))
     
     @staticmethod
-    def _player_defend(player: Player):
+    def _player_defend(player: 'Player'):
         """Handle player's defend action."""
         player.add_status_effect("protected", 1)
         slow_print(colored_text("You raise your guard, preparing to defend.", Colors.BLUE))
     
     @staticmethod
-    def _use_combat_item(player: Player):
+    def _use_combat_item(player: 'Player'):
         """Handle using an item in combat."""
         usable_items = [i for i in player.inventory if i.usable]
         
@@ -149,7 +152,7 @@ class CombatSystem:
             slow_print(colored_text("Invalid choice.", Colors.RED))
     
     @staticmethod
-    def _attempt_flee(player: Player, creature: Creature) -> bool:
+    def _attempt_flee(player: 'Player', creature: Creature) -> bool:
         """Attempt to flee from combat."""
         flee_chance = 30 + player.skills[SkillType.STEALTH] * 5
         
@@ -163,7 +166,7 @@ class CombatSystem:
             return False
     
     @staticmethod
-    def _creature_attack(player: Player, creature: Creature):
+    def _creature_attack(player: 'Player', creature: Creature):
         """Handle creature's attack."""
         damage, ability = creature.attack()
         actual_damage = player.take_damage(damage)
@@ -177,7 +180,7 @@ class CombatSystem:
         slow_print(colored_text(attack_msg, Colors.BOLD_RED))
     
     @staticmethod
-    def _handle_victory(player: Player, creature: Creature):
+    def _handle_victory(player: 'Player', creature: Creature):
         """Handle victory rewards."""
         player.kills += 1
         player.kill_count[creature.name] = player.kill_count.get(creature.name, 0) + 1

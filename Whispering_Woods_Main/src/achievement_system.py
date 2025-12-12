@@ -1,6 +1,6 @@
 """Achievement system."""
 
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Optional, Any
 from datetime import datetime
 import random
 
@@ -123,7 +123,7 @@ class AchievementSystem:
         }
     
     @classmethod
-    def check_achievements(cls, player: Player):
+    def check_achievements(cls, player: 'Player'):
         """Check and unlock any earned achievements."""
         if not cls._achievements:
             cls.initialize_achievements()
@@ -175,7 +175,7 @@ class AchievementSystem:
                 )
     
     @classmethod
-    def _try_unlock(cls, achievement_id: str, player: Player) -> Optional[Achievement]:
+    def _try_unlock(cls, achievement_id: str, player: 'Player') -> Optional[Achievement]:
         """Try to unlock an achievement."""
         if achievement_id in player.achievements:
             return None
@@ -188,7 +188,7 @@ class AchievementSystem:
         return None
     
     @classmethod
-    def get_achievements_display(cls, player: Player) -> str:
+    def get_achievements_display(cls, player: 'Player') -> str:
         """Get formatted display of achievements."""
         if not cls._achievements:
             cls.initialize_achievements()

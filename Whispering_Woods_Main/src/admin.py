@@ -2,7 +2,7 @@
 
 import json
 import os
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 import random
 
 from .colors import Colors
@@ -337,7 +337,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Player commands -----
     @staticmethod
-    def _give_item(player: Player):
+    def _give_item(player: 'Player'):
         items = ItemFactory.get_all_items()
         instant_print(colored_text("\nAvailable Items:", Colors.YELLOW))
         for name in sorted(items):
@@ -352,7 +352,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Item not found.", Colors.RED))
 
     @staticmethod
-    def _give_gold(player: Player):
+    def _give_gold(player: 'Player'):
         while True:
             amount_str = get_input("Amount: ")
             try:
@@ -367,7 +367,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Invalid amount.", Colors.RED))
 
     @staticmethod
-    def _set_health(player: Player):
+    def _set_health(player: 'Player'):
         while True:
             amount_str = get_input(f"Health amount (max {player.max_health}): ")
             try:
@@ -382,7 +382,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Invalid amount.", Colors.RED))
 
     @staticmethod
-    def _set_level(player: Player):
+    def _set_level(player: 'Player'):
         while True:
             level_str = get_input("Level (1-100): ")
             try:
@@ -398,7 +398,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Invalid level.", Colors.RED))
 
     @staticmethod
-    def _give_all_items(player: Player):
+    def _give_all_items(player: 'Player'):
         count_before = len(player.inventory)
         for item_name in ItemFactory.get_all_items():
             item = ItemFactory.create_item(item_name)
@@ -408,7 +408,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
         slow_print(colored_text(f"Added all items to inventory ({count_after - count_before} new items).", Colors.GREEN))
 
     @staticmethod
-    def _complete_all_quests(player: Player):
+    def _complete_all_quests(player: 'Player'):
         for quest in player.active_quests:
             quest.is_complete = True
             for i in range(len(quest.completed_objectives)):
@@ -416,7 +416,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
         slow_print(colored_text("All quests marked complete.", Colors.GREEN))
 
     @staticmethod
-    def _unlock_all_achievements(player: Player):
+    def _unlock_all_achievements(player: 'Player'):
         AchievementSystem.initialize_achievements()
         for achievement_id in AchievementSystem._achievements:
             if achievement_id not in player.achievements:
@@ -424,7 +424,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
         slow_print(colored_text("All achievements unlocked.", Colors.GREEN))
 
     @staticmethod
-    def _discover_all_locations(player: Player, world: Dict[str, Location]):
+    def _discover_all_locations(player: 'Player', world: Dict[str, 'Location']):
         player.discovered_locations = list(world.keys())
         slow_print(colored_text(f"All {len(world)} locations marked as discovered.", Colors.GREEN))
 
@@ -554,7 +554,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Inventory management -----
     @staticmethod
-    def _inventory_menu(player: Player):
+    def _inventory_menu(player: 'Player'):
         while True:
             clear_screen()
             instant_print(colored_text("\nINVENTORY MANAGEMENT", Colors.CYAN))
@@ -615,7 +615,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Unknown choice.", Colors.RED))
 
     @staticmethod
-    def _remove_item_from_inventory(player: Player):
+    def _remove_item_from_inventory(player: 'Player'):
         if not player.inventory:
             slow_print(colored_text("Inventory is empty.", Colors.YELLOW))
             return
@@ -653,7 +653,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _clear_inventory(player: Player):
+    def _clear_inventory(player: 'Player'):
         confirm = get_input("Are you sure you want to clear your entire inventory? (y/n): ")
         if confirm.lower() == "y":
             player.inventory.clear()
@@ -663,7 +663,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Skills management -----
     @staticmethod
-    def _skills_menu(player: Player):
+    def _skills_menu(player: 'Player'):
         while True:
             clear_screen()
             instant_print(colored_text("\nSKILLS MANAGEMENT", Colors.CYAN))
@@ -679,13 +679,13 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Unknown choice.", Colors.RED))
 
     @staticmethod
-    def _max_all_skills(player: Player):
+    def _max_all_skills(player: 'Player'):
         for skill in player.skills:
             player.skills[skill] = 10
         slow_print(colored_text("All skills set to maximum (10).", Colors.GREEN))
 
     @staticmethod
-    def _remove_skill_points(player: Player):
+    def _remove_skill_points(player: 'Player'):
         skill = AdminPanel._choose_skill(player, prompt="Select skill to remove points from")
         if skill is None:
             return
@@ -706,7 +706,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _add_skill_points(player: Player):
+    def _add_skill_points(player: 'Player'):
         skill = AdminPanel._choose_skill(player, prompt="Select skill to add points to")
         if skill is None:
             return
@@ -727,7 +727,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _choose_skill(player: Player, prompt="Choose a skill:") -> Optional[SkillType]:
+    def _choose_skill(player: 'Player', prompt="Choose a skill:") -> Optional['SkillType']:
         skills = list(SkillType)
         instant_print(colored_text("\nSkills:", Colors.YELLOW))
         for idx, skill in enumerate(skills, 1):
@@ -747,7 +747,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Weather control -----
     @staticmethod
-    def _weather_menu(time_weather: TimeWeatherSystem):
+    def _weather_menu(time_weather: 'TimeWeatherSystem'):
         weathers = list(Weather)
         instant_print(colored_text("\nWeather types:", Colors.YELLOW))
         for idx, weather in enumerate(weathers, 1):
@@ -771,7 +771,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Time control -----
     @staticmethod
-    def _time_menu(time_weather: TimeWeatherSystem):
+    def _time_menu(time_weather: 'TimeWeatherSystem'):
         while True:
             clear_screen()
             instant_print(colored_text("\nTIME CONTROL", Colors.CYAN))
@@ -823,7 +823,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Quest objective editor -----
     @staticmethod
-    def _quest_objective_editor(player: Player):
+    def _quest_objective_editor(player: 'Player'):
         if not player.active_quests:
             slow_print(colored_text("No active quests.", Colors.YELLOW))
             return
@@ -890,7 +890,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
 
     # ----- Status effect manager -----
     @staticmethod
-    def _status_effect_manager(player: Player):
+    def _status_effect_manager(player: 'Player'):
         while True:
             clear_screen()
             instant_print(colored_text("\nSTATUS EFFECTS", Colors.CYAN))
@@ -932,7 +932,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Unknown choice.", Colors.RED))
 
     @staticmethod
-    def _remove_status_effect(player: Player):
+    def _remove_status_effect(player: 'Player'):
         effects = list(player.status_effects.keys())
         if not effects:
             slow_print(colored_text("No status effects to remove.", Colors.YELLOW))
@@ -955,7 +955,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _add_status_effect(player: Player):
+    def _add_status_effect(player: 'Player'):
         effect = get_input("Enter status effect name: ")
         duration_str = get_input("Enter duration in minutes: ")
         try:
@@ -1125,7 +1125,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _edit_location_menu(location: Location):
+    def _edit_location_menu(location: 'Location'):
         while True:
             clear_screen()
             instant_print(colored_text(f"\nEditing Location: {location.name}", Colors.CYAN))
@@ -1169,7 +1169,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
                 slow_print(colored_text("Unknown choice.", Colors.RED))
 
     @staticmethod
-    def _add_item_to_location(location: Location):
+    def _add_item_to_location(location: 'Location'):
         items = ItemFactory.get_all_items()
         instant_print(colored_text("\nAvailable items:", Colors.YELLOW))
         for name in sorted(items):
@@ -1195,7 +1195,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Item not found.", Colors.RED))
 
     @staticmethod
-    def _remove_item_from_location(location: Location):
+    def _remove_item_from_location(location: 'Location'):
         if not location.items:
             slow_print(colored_text("No items in this location.", Colors.YELLOW))
             return
@@ -1233,7 +1233,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Invalid input.", Colors.RED))
 
     @staticmethod
-    def _add_creature_to_location(location: Location):
+    def _add_creature_to_location(location: 'Location'):
         creatures = CreatureFactory.get_all_creatures()
         instant_print(colored_text("\nAvailable creatures:", Colors.YELLOW))
         for name in sorted(creatures):
@@ -1247,7 +1247,7 @@ Type command number or alias (exclusive, reality, timetravel, easteregg, etc.)
             slow_print(colored_text("Creature not found.", Colors.RED))
 
     @staticmethod
-    def _remove_creature_from_location(location: Location):
+    def _remove_creature_from_location(location: 'Location'):
         if not location.creatures:
             slow_print(colored_text("No creatures in this location.", Colors.YELLOW))
             return
@@ -1592,7 +1592,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("Creature not found.", Colors.RED))
     
     @staticmethod
-    def _give_expanded_item(player: Player):
+    def _give_expanded_item(player: 'Player'):
         """Give an item from the expanded items database."""
         instant_print(colored_text("\nExpanded Items (showing first 20):", Colors.YELLOW))
         items_list = sorted(list(EXPANDED_ITEMS.keys())[:20])
@@ -1774,7 +1774,7 @@ Weather: {game.time_weather.current_weather.value}
     # ===== NEW COMPREHENSIVE ADMIN COMMANDS =====
     
     @staticmethod
-    def _manage_companions(player: Player):
+    def _manage_companions(player: 'Player'):
         """Manage player companions."""
         slow_print(colored_text("\n=== COMPANION MANAGEMENT ===", Colors.CYAN))
         slow_print(f"Current companions: {', '.join(player.companions) if player.companions else 'None'}")
@@ -1803,7 +1803,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All companions removed.", Colors.GREEN))
 
     @staticmethod
-    def _manage_reputation(player: Player):
+    def _manage_reputation(player: 'Player'):
         """Manage player reputation with factions."""
         slow_print(colored_text("\n=== REPUTATION MANAGEMENT ===", Colors.CYAN))
         if player.reputation:
@@ -1833,7 +1833,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All reputation cleared.", Colors.GREEN))
 
     @staticmethod
-    def _manage_notes(player: Player):
+    def _manage_notes(player: 'Player'):
         """Manage player notes."""
         slow_print(colored_text("\n=== NOTES MANAGEMENT ===", Colors.CYAN))
         if player.notes:
@@ -1863,7 +1863,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All notes cleared.", Colors.GREEN))
 
     @staticmethod
-    def _manage_equipment(player: Player):
+    def _manage_equipment(player: 'Player'):
         """Manage equipped items."""
         slow_print(colored_text("\n=== EQUIPMENT MANAGEMENT ===", Colors.CYAN))
         for slot, item in player.equipped.items():
@@ -1910,7 +1910,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All equipment removed.", Colors.GREEN))
 
     @staticmethod
-    def _manage_resources(player: Player):
+    def _manage_resources(player: 'Player'):
         """Manage stamina, mana, hunger, thirst, sanity."""
         slow_print(colored_text("\n=== RESOURCE MANAGEMENT ===", Colors.CYAN))
         slow_print(f"  Stamina: {player.stamina}/{player.max_stamina}")
@@ -1955,7 +1955,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("Invalid value.", Colors.RED))
 
     @staticmethod
-    def _manage_statistics(player: Player):
+    def _manage_statistics(player: 'Player'):
         """Manage player statistics."""
         slow_print(colored_text("\n=== STATISTICS MANAGEMENT ===", Colors.CYAN))
         slow_print(f"  Deaths: {player.deaths}")
@@ -2016,7 +2016,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All statistics reset.", Colors.GREEN))
 
     @staticmethod
-    def _manage_quests(player: Player):
+    def _manage_quests(player: 'Player'):
         """Advanced quest management."""
         slow_print(colored_text("\n=== QUEST MANAGEMENT ===", Colors.CYAN))
         slow_print(f"Active: {len(player.active_quests)}, Completed: {len(player.completed_quests)}, Failed: {len(player.failed_quests)}")
@@ -2075,7 +2075,7 @@ Weather: {game.time_weather.current_weather.value}
                 slow_print(f"  - {qid}")
 
     @staticmethod
-    def _manage_achievements(player: Player):
+    def _manage_achievements(player: 'Player'):
         """Advanced achievement management."""
         slow_print(colored_text("\n=== ACHIEVEMENT MANAGEMENT ===", Colors.CYAN))
         slow_print(f"Unlocked: {len(player.achievements)}")
@@ -2110,7 +2110,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All achievements locked.", Colors.GREEN))
 
     @staticmethod
-    def _manage_recipes(player: Player):
+    def _manage_recipes(player: 'Player'):
         """Advanced recipe management."""
         slow_print(colored_text("\n=== RECIPE MANAGEMENT ===", Colors.CYAN))
         slow_print(f"Known recipes: {len(player.known_recipes)}")
@@ -2140,7 +2140,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("All recipes removed.", Colors.GREEN))
 
     @staticmethod
-    def _set_play_time(player: Player):
+    def _set_play_time(player: 'Player'):
         """Set play time."""
         try:
             minutes = int(get_input("Play time in minutes: "))
@@ -2168,7 +2168,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("No save file found.", Colors.RED))
 
     @staticmethod
-    def _reset_player_progress(player: Player):
+    def _reset_player_progress(player: 'Player'):
         """Reset player progress."""
         confirm = get_input("Reset ALL player progress? Type 'CONFIRM': ")
         if confirm == "CONFIRM":
@@ -2201,7 +2201,7 @@ Weather: {game.time_weather.current_weather.value}
     # ===== EXCLUSIVE ADMIN-ONLY FEATURES =====
     
     @staticmethod
-    def _admin_exclusive_items(player: Player):
+    def _admin_exclusive_items(player: 'Player'):
         """Give admin-exclusive legendary items that can ONLY be obtained through admin panel."""
         slow_print(colored_text("\n╔═══════════════════════════════════════════╗", Colors.MAGENTA))
         slow_print(colored_text("║    🌟 ADMIN EXCLUSIVE ITEMS 🌟           ║", Colors.MAGENTA))
@@ -2436,7 +2436,7 @@ Weather: {game.time_weather.current_weather.value}
             slow_print(colored_text("\n✨ ALL EASTER EGGS ACTIVATED!", Colors.BOLD_MAGENTA))
 
     @staticmethod
-    def _god_powers_menu(player: Player):
+    def _god_powers_menu(player: 'Player'):
         """Grant temporary god-like powers."""
         slow_print(colored_text("\n╔═══════════════════════════════════════════╗", Colors.MAGENTA))
         slow_print(colored_text("║    ⚡ GOD POWERS BESTOWED ⚡             ║", Colors.MAGENTA))

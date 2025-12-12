@@ -4,7 +4,7 @@ import random
 from datetime import datetime, timedelta
 from typing import Optional, Tuple
 
-from .utils import WeatherType, TimeOfDay
+from .utils import Weather, TimeOfDay
 from .colors import Colors
 
 # ============================================================================

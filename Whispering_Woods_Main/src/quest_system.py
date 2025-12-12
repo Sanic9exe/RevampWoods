@@ -1,10 +1,10 @@
 """Quest system."""
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple, Any
 import random
 
 from .models import Quest, Item, Creature
-from .utils import QuestType, QuestStatus, slow_print
+from .utils import slow_print
 from .colors import Colors
 
 # ============================================================================
@@ -119,7 +119,7 @@ class QuestSystem:
         return cls._quests.get(quest_id)
     
     @classmethod
-    def start_quest(cls, quest_id: str, player: Player) -> str:
+    def start_quest(cls, quest_id: str, player: 'Player') -> str:
         """Start a quest for the player."""
         if not cls._quests:
             cls.initialize_quests()
@@ -150,7 +150,7 @@ class QuestSystem:
         return colored_text(f"Quest '{quest.name}' started!", Colors.BOLD_YELLOW)
     
     @classmethod
-    def complete_quest(cls, quest_id: str, player: Player) -> str:
+    def complete_quest(cls, quest_id: str, player: 'Player') -> str:
         """Complete a quest and give rewards."""
         for quest in player.active_quests:
             if quest.quest_id == quest_id and quest.is_complete:
