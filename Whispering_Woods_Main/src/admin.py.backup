@@ -48,9 +48,10 @@ class AdminPanel:
                 "addeffect": "31", "maxskills": "32", "unlockrecipes": "33", "discoverall": "34",
                 "clearinv": "35", "removeitem": "36", "spawncustom": "37", "dropitem": "38",
                 "placeitem": "39",
-                # Browse commands removed (40-42, 44-48)
-                "triggerevent": "43",
-                "spawnexpanded": "49", "giveexpanded": "50",
+                # New content commands
+                "expandedcreatures": "40", "expandeditems": "41", "npcs": "42", "triggerevent": "43",
+                "maneuvers": "44", "lore": "45", "weatherpatterns": "46", "statuseffects": "47",
+                "expandedlocs": "48", "spawnexpanded": "49", "giveexpanded": "50",
                 # Difficulty and location commands
                 "difficulty": "51", "setdifficulty": "51", "locations": "52", "listlocs": "52",
                 "accessibility": "53", "checkaccess": "53", "teleportexpanded": "54", "tpexpanded": "54",
@@ -148,25 +149,24 @@ class AdminPanel:
                 AdminPanel._drop_item_in_location(game)
             elif command == "39":
                 AdminPanel._place_item_in_location(game)
-            # Commands 40-42, 44-48: Browse functions removed per user request
-            # elif command == "40":
-            #     AdminPanel._browse_expanded_creatures()
-            # elif command == "41":
-            #     AdminPanel._browse_expanded_items()
-            # elif command == "42":
-            #     AdminPanel._browse_npcs()
+            elif command == "40":
+                AdminPanel._browse_expanded_creatures()
+            elif command == "41":
+                AdminPanel._browse_expanded_items()
+            elif command == "42":
+                AdminPanel._browse_npcs()
             elif command == "43":
                 AdminPanel._trigger_random_event(game)
-            # elif command == "44":
-            #     AdminPanel._browse_combat_maneuvers()
-            # elif command == "45":
-            #     AdminPanel._read_lore_entry()
-            # elif command == "46":
-            #     AdminPanel._browse_weather_patterns()
-            # elif command == "47":
-            #     AdminPanel._browse_status_effects()
-            # elif command == "48":
-            #     AdminPanel._browse_expanded_locations()
+            elif command == "44":
+                AdminPanel._browse_combat_maneuvers()
+            elif command == "45":
+                AdminPanel._read_lore_entry()
+            elif command == "46":
+                AdminPanel._browse_weather_patterns()
+            elif command == "47":
+                AdminPanel._browse_status_effects()
+            elif command == "48":
+                AdminPanel._browse_expanded_locations()
             elif command == "49":
                 AdminPanel._spawn_expanded_creature(game)
             elif command == "50":
@@ -275,13 +275,19 @@ class AdminPanel:
 
   ═══ CREATURES ═══
     [10] Spawn Creature        [37] Spawn Custom        [49] Spawn Expanded
+    [40] Browse Expanded Creatures
 
   ═══ ITEMS ═══
     [38] Drop in Location      [39] Place in Location   [50] Give Expanded
+    [41] Browse Expanded Items
 
   ═══ GAME SYSTEMS ═══
     [19] Weather Control       [20] Time Control        [51] Set Difficulty
     [43] Trigger Random Event  [66] Save Game          [67] Load Game
+
+  ═══ CONTENT BROWSERS ═══
+    [42] Browse NPCs           [44] Combat Maneuvers    [45] Read Lore
+    [46] Weather Patterns      [48] Expanded Locations
 
   ═══ OTHER ═══
     [16] Text Speed            [17] Debug Info
